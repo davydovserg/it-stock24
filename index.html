@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>АйТи-Сток 24 — серверное и сетевое оборудование в Москве</title>
+<meta name="description" content="Крупнейший онлайн-дискаунтер серверного оборудования. Труднодоступное оборудование в наличии на складе в Москве, доставка по России.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#06080b; --bg2:#0b0f14; --line:#1a222c; --line2:#26313d;
+  --tx:#e9eef3; --mut:#7d8a97; --led:#ff5a1f; --ok:#3dff8b; --ice:#8fd3ff;
+  --mono:'JetBrains Mono',ui-monospace,monospace; --sans:'Onest',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--led);color:#000}
+.mono{font-family:var(--mono)}
+.wrap{max-width:1360px;margin:0 auto;padding:0 32px}
+
+/* ---------- top ---------- */
+.top{border-bottom:1px solid var(--line);font:12px/1 var(--mono);color:var(--mut)}
+.top .wrap{display:flex;gap:28px;align-items:center;height:38px}
+.top .dot{width:6px;height:6px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok);display:inline-block;margin-right:8px;animation:blink 2.4s infinite}
+.top .sp{flex:1}
+.top a:hover{color:var(--tx)}
+header.nav{position:sticky;top:0;z-index:50;background:rgba(6,8,11,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header.nav .wrap{display:flex;align-items:center;height:72px;gap:28px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:900;font-size:20px;letter-spacing:-.02em}
+.logo i{display:grid;grid-template-columns:repeat(3,6px);gap:3px}
+.logo i b{width:6px;height:6px;background:var(--line2);border-radius:1px}
+.logo i b:nth-child(2),.logo i b:nth-child(4),.logo i b:nth-child(9){background:var(--led);box-shadow:0 0 8px var(--led)}
+.logo span{color:var(--led)}
+.menu{display:flex;gap:24px;white-space:nowrap;font-size:14px;color:var(--mut)}
+.menu a:hover{color:var(--tx)}
+.nav .sp{flex:1}
+.btn{white-space:nowrap;display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 22px;border-radius:999px;font:500 14px var(--sans);border:1px solid var(--line2);transition:.25s;cursor:pointer;background:none;color:var(--tx)}
+.btn:hover{border-color:var(--tx)}
+.btn.hot{background:var(--led);border-color:var(--led);color:#0a0a0a;font-weight:700}
+.btn.hot:hover{box-shadow:0 0 0 6px rgba(255,90,31,.18),0 10px 40px rgba(255,90,31,.45)}
+.cart{white-space:nowrap;font:13px var(--mono);color:var(--mut)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:calc(100vh - 110px);display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--line)}
+#field{position:absolute;inset:0;width:100%;height:100%}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 72% 50%,transparent 0,var(--bg) 85%);pointer-events:none}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:40px;align-items:center;width:100%;padding-top:60px;padding-bottom:60px}
+.kicker{font:12px var(--mono);color:var(--led);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.kicker::before{content:"";width:28px;height:1px;background:var(--led)}
+h1{font-size:clamp(44px,6.4vw,104px);line-height:.92;font-weight:900;letter-spacing:-.045em}
+h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.06em}
+h1 .w>span{display:inline-block;transform:translateY(110%);animation:up .9s cubic-bezier(.2,.8,.2,1) forwards}
+h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px var(--tx)}
+h1 .o{color:var(--led)}
+.lead{margin-top:30px;max-width:520px;color:var(--mut);font-size:18px;line-height:1.55}
+.lead b{color:var(--tx);font-weight:500}
+
+.search{margin-top:40px;max-width:600px;border:1px solid var(--line2);border-radius:18px;background:rgba(11,15,20,.8);backdrop-filter:blur(8px);overflow:hidden}
+.search .row{display:flex;align-items:center;gap:14px;padding:0 10px 0 22px;height:68px}
+.search .pr{font:14px var(--mono);color:var(--led)}
+.search input{flex:1;background:none;border:0;outline:0;color:var(--tx);font:500 18px var(--mono)}
+.search input::placeholder{color:#4a5663}
+.search .res{border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:14px 22px;font:13px var(--mono);color:var(--mut);gap:12px}
+.search .res .st{color:var(--ok);display:flex;align-items:center;gap:8px;white-space:nowrap}
+.search .res .st::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok)}
+.search .res .pz{color:var(--tx);font-weight:700;white-space:nowrap}
+.search .res .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stats{margin-top:44px;display:flex;gap:48px}
+.stats div{font:12px/1.4 var(--mono);color:var(--mut)}
+.stats b{display:block;font:700 34px/1 var(--sans);color:var(--tx);letter-spacing:-.03em;margin-bottom:8px}
+
+/* rack */
+.stage{perspective:1600px;height:640px;display:flex;align-items:center;justify-content:center}
+.rack{position:relative;width:400px;height:600px;transform-style:preserve-3d;transform:rotateY(-24deg) rotateX(8deg);transition:transform .25s ease-out}
+.rack .face{position:absolute;inset:0;transform-style:preserve-3d}
+.rack .frame{position:absolute;inset:-16px;border:2px solid var(--line2);border-radius:10px;background:linear-gradient(180deg,#0d1218,#080b0f);transform:translateZ(-40px);box-shadow:0 60px 120px rgba(0,0,0,.8)}
+.rack .side{position:absolute;top:-16px;bottom:-16px;width:280px;background:linear-gradient(90deg,#0b0f14,#06080b);border:1px solid var(--line);transform-origin:left;transform:translateX(416px) translateZ(-40px) rotateY(90deg)}
+.rack .side::before{content:"";position:absolute;inset:30px;background:repeating-linear-gradient(0deg,transparent 0 10px,rgba(255,255,255,.025) 10px 12px)}
+.units{position:absolute;inset:0;display:flex;flex-direction:column;gap:8px;transform-style:preserve-3d}
+.u{position:relative;flex:1;border-radius:5px;background:linear-gradient(180deg,#1a2129,#11161c);border:1px solid #29333e;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.2,.8,.2,1),background .3s;cursor:pointer;display:flex;align-items:center;padding:0 14px;gap:10px}
+.u::after{content:"";position:absolute;left:0;right:0;top:100%;height:90px;transform-origin:top;transform:rotateX(-90deg);background:linear-gradient(180deg,#151b22,#0a0d11);border:1px solid #222b35;opacity:0;transition:opacity .3s}
+.u:hover,.u.on{transform:translateZ(90px)}
+.u:hover::after,.u.on::after{opacity:1}
+.u .bays{display:flex;gap:4px;flex:1}
+.u .bays i{flex:1;height:26px;border-radius:2px;background:repeating-linear-gradient(90deg,#0b0f13 0 3px,#151b22 3px 5px);border:1px solid #232c36;position:relative}
+.u .bays i::after{content:"";position:absolute;right:3px;top:3px;width:3px;height:3px;border-radius:50%;background:var(--ok);opacity:.25}
+.u .bays i.a::after{opacity:1;box-shadow:0 0 6px var(--ok);animation:blink var(--t,1s) infinite}
+.u .leds{display:flex;flex-direction:column;gap:5px}
+.u .leds b{width:5px;height:5px;border-radius:50%;background:#2a333d}
+.u .leds b.r{background:var(--led);box-shadow:0 0 8px var(--led);animation:blink 3s infinite}
+.u .leds b.g{background:var(--ok);box-shadow:0 0 8px var(--ok)}
+.u .lab{font:9px var(--mono);color:#56636f;writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:.1em}
+.u .tag{position:absolute;inset:0;display:flex;align-items:center;gap:14px;padding:0 16px 0 34px;border-radius:5px;background:linear-gradient(90deg,#0b0f14 60%,rgba(255,90,31,.25));border:1px solid var(--led);white-space:nowrap;font:11px var(--mono);color:var(--mut);opacity:0;transition:.35s;pointer-events:none;overflow:hidden}
+.u .tag b{color:var(--tx);font:700 14px var(--sans);flex:1;overflow:hidden;text-overflow:ellipsis}
+.u .tag s{text-decoration:none;color:var(--led);font:700 15px var(--sans)}
+.u:hover .tag,.u.on .tag{opacity:1}
+.rack .glow{position:absolute;left:10%;right:10%;bottom:-120px;height:80px;background:radial-gradient(closest-side,rgba(255,90,31,.35),transparent);transform:rotateX(90deg) translateZ(-60px);filter:blur(10px)}
+.hint{position:absolute;bottom:26px;right:32px;z-index:3;font:11px var(--mono);color:#4a5663;letter-spacing:.1em}
+
+/* ---------- ticker ---------- */
+.tick{border-bottom:1px solid var(--line);overflow:hidden;background:var(--bg2)}
+.tick .tr{display:flex;width:max-content;animation:mq 60s linear infinite}
+.tick span{font:13px var(--mono);color:var(--mut);padding:18px 28px;border-right:1px solid var(--line);white-space:nowrap}
+.tick span b{color:var(--tx);font-weight:500;margin-right:10px}
+.tick span i{font-style:normal;color:var(--led)}
+
+/* ---------- sections ---------- */
+section{position:relative;padding:130px 0;border-bottom:1px solid var(--line)}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:60px}
+.sh .n{font:12px var(--mono);color:var(--led);letter-spacing:.14em;margin-bottom:18px}
+h2{font-size:clamp(36px,4.6vw,72px);line-height:.96;letter-spacing:-.04em;font-weight:900;max-width:900px}
+h2 em{font-style:normal;color:var(--mut)}
+.sh p{max-width:380px;color:var(--mut);line-height:1.55}
+.rv{opacity:0;transform:translateY(40px);transition:1s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* rare */
+.rare{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.rc{background:var(--bg);padding:34px;min-height:380px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:background .4s}
+.rc:hover{background:#0c1116}
+.rc .pn{font:700 30px var(--mono);letter-spacing:-.03em}
+.rc .br{font:12px var(--mono);color:var(--mut);margin-top:8px}
+.rc .ds{margin-top:auto;font-size:17px;line-height:1.45;max-width:280px}
+.rc .ft{display:flex;justify-content:space-between;align-items:center;margin-top:26px;padding-top:22px;border-top:1px dashed var(--line2)}
+.rc .pr{font:700 28px var(--sans);letter-spacing:-.03em}
+.rc .pr small{font-size:15px;color:var(--mut);font-weight:500}
+.rc .add{width:52px;height:52px;border-radius:50%;border:1px solid var(--line2);display:grid;place-items:center;transition:.3s;font-size:22px}
+.rc:hover .add{background:var(--led);border-color:var(--led);color:#000;transform:rotate(90deg)}
+.rc svg{position:absolute;right:-30px;top:60px;width:230px;opacity:.5;transition:.6s}
+.rc:hover svg{opacity:1;transform:translateX(-14px)}
+.instock{display:inline-flex;align-items:center;gap:8px;font:11px var(--mono);color:var(--ok);margin-bottom:26px;text-transform:uppercase;letter-spacing:.1em}
+.instock::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok);animation:blink 2s infinite}
+
+/* categories */
+.cats{border-top:1px solid var(--line2)}
+.cat{display:grid;grid-template-columns:90px 1fr auto 60px;align-items:center;gap:30px;padding:34px 0;border-bottom:1px solid var(--line2);position:relative;cursor:pointer}
+.cat::before{content:"";position:absolute;inset:0 -32px;background:var(--led);transform:scaleY(0);transform-origin:bottom;transition:transform .5s cubic-bezier(.2,.8,.2,1);z-index:0}
+.cat>*{position:relative;z-index:1;transition:color .35s}
+.cat:hover::before{transform:scaleY(1)}
+.cat:hover>*{color:#0a0a0a!important}
+.cat .no{font:13px var(--mono);color:var(--mut)}
+.cat .t{font-size:clamp(30px,4vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1}
+.cat .sub{font:12px/1.6 var(--mono);color:var(--mut);max-width:420px;text-align:right}
+.cat .ar{font-size:30px;transition:transform .4s}
+.cat:hover .ar{transform:rotate(-45deg)}
+
+/* bestsellers */
+.best{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.bc{border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;min-height:300px;background:linear-gradient(180deg,var(--bg2),var(--bg));transition:.35s;position:relative;overflow:hidden}
+.bc:hover{border-color:var(--line2);transform:translateY(-6px)}
+.bc::before{content:"";position:absolute;inset:0;background:radial-gradient(240px circle at var(--mx,50%) var(--my,0%),rgba(255,90,31,.14),transparent 70%);opacity:0;transition:.3s}
+.bc:hover::before{opacity:1}
+.bc .ty{font:11px var(--mono);color:var(--led);text-transform:uppercase;letter-spacing:.12em}
+.bc .pn{font:500 13px var(--mono);color:var(--mut);margin-top:16px}
+.bc h3{font-size:19px;font-weight:500;line-height:1.3;margin-top:8px;letter-spacing:-.01em}
+.bc .spec{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px}
+.bc .spec i{font:11px var(--mono);font-style:normal;color:var(--mut);border:1px solid var(--line2);border-radius:6px;padding:4px 8px}
+.bc .bot{margin-top:auto;padding-top:22px;display:flex;justify-content:space-between;align-items:center}
+.bc .pr{font:700 22px var(--sans);letter-spacing:-.02em}
+.bc .pr.ask{font:500 13px var(--mono);color:var(--ice)}
+.bc .act{display:flex;gap:6px}
+.bc .act button{width:38px;height:38px;border-radius:10px;border:1px solid var(--line2);background:none;color:var(--tx);cursor:pointer;font-size:15px;transition:.25s}
+.bc .act button:hover{border-color:var(--tx)}
+.bc .act button.c:hover{background:var(--led);border-color:var(--led);color:#000}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sv{border:1px solid var(--line);border-radius:22px;padding:36px;min-height:420px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.sv .ix{font:12px var(--mono);color:var(--mut)}
+.sv h3{font-size:32px;line-height:1.02;letter-spacing:-.03em;font-weight:700;margin-top:auto}
+.sv p{color:var(--mut);margin-top:16px;line-height:1.55}
+.sv ul{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:9px;font:13px var(--mono)}
+.sv li::before{content:"→ ";color:var(--led)}
+.sv .vis{position:absolute;top:30px;right:30px;width:120px;height:120px}
+.sv.big{background:var(--led);color:#0a0a0a;border-color:var(--led)}
+.sv.big p,.sv.big .ix{color:rgba(0,0,0,.62)}
+.sv.big li::before{color:#000}
+
+/* brands */
+.brands{padding:110px 0;overflow:hidden}
+.bl{display:flex;width:max-content;animation:mq 40s linear infinite}
+.bl.r{animation-direction:reverse;animation-duration:50s;margin-top:10px}
+.bl span{font-size:clamp(60px,9vw,150px);font-weight:900;letter-spacing:-.05em;line-height:1;padding:0 36px;color:transparent;-webkit-text-stroke:1px #2c3743;transition:.3s;white-space:nowrap}
+.bl span:hover{color:var(--tx);-webkit-text-stroke-color:var(--tx)}
+.bl span.f{color:var(--tx);-webkit-text-stroke:0}
+.bl span.d{color:var(--led);-webkit-text-stroke:0;padding:0 6px;font-size:clamp(20px,2.4vw,36px);align-self:center}
+
+/* cta */
+.cta{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.cta h2{font-size:clamp(42px,5.6vw,92px)}
+.cta .ph{display:block;margin-top:40px;font:700 clamp(32px,4vw,56px)/1 var(--mono);letter-spacing:-.04em;color:var(--led)}
+.cta .ph:hover{text-shadow:0 0 30px rgba(255,90,31,.6)}
+.cta .ml{display:block;margin-top:14px;font:16px var(--mono);color:var(--mut)}
+form.cb{border:1px solid var(--line2);border-radius:24px;padding:34px;background:var(--bg2);display:flex;flex-direction:column;gap:14px}
+form.cb label{font:11px var(--mono);color:var(--mut);text-transform:uppercase;letter-spacing:.12em}
+form.cb input,form.cb textarea{width:100%;background:var(--bg);border:1px solid var(--line2);border-radius:12px;color:var(--tx);font:16px var(--sans);padding:16px 18px;outline:0;transition:.25s;margin-top:8px;resize:none}
+form.cb input:focus,form.cb textarea:focus{border-color:var(--led)}
+form.cb .btn{justify-content:center;height:58px;margin-top:8px;font-size:16px}
+form.cb .ok{display:none;font:14px var(--mono);color:var(--ok)}
+form.cb small{color:var(--mut);font-size:12px}
+
+footer{padding:60px 0 40px;color:var(--mut);font-size:13px}
+footer .g{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.4fr;gap:40px}
+footer h4{font:11px var(--mono);text-transform:uppercase;letter-spacing:.14em;color:var(--tx);margin-bottom:16px}
+footer a{display:block;margin-bottom:9px}
+footer a:hover{color:var(--tx)}
+footer .bt{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;font:11px/1.6 var(--mono)}
+.huge{font-size:clamp(80px,17vw,290px);font-weight:900;letter-spacing:-.06em;line-height:.8;color:#0e1318;margin-top:70px;user-select:none;white-space:nowrap}
+.huge span{color:#1d1209}
+
+@keyframes up{to{transform:none}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+@media(max-width:1100px){
+  .hero .wrap{grid-template-columns:1fr}
+  .stage{height:520px}
+  .rack{width:300px;height:460px}
+  .u .tag{display:none}
+  .best{grid-template-columns:repeat(2,1fr)}
+  .rare,.svc{grid-template-columns:1fr}
+  .cta{grid-template-columns:1fr}
+  .menu{display:none}
+  footer .g{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .wrap{padding:0 18px}
+  .top .hide{display:none}
+  .best{grid-template-columns:1fr}
+  .stats{gap:24px;flex-wrap:wrap}
+  .cat{grid-template-columns:40px 1fr 30px}
+  .cat .sub{display:none}
+  .sh{flex-direction:column;align-items:start}
+  section{padding:90px 0}
+  .nav .cart,.nav .btn:not(.hot){display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}h1 .w>span{transform:none}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <span><i class="dot"></i>Склад в Москве работает</span>
+  <span class="hide">г. Москва, 3-я Хорошевская ул., д. 18, корп. 1</span>
+  <span class="hide">ПН–ПТ 10:00–18:00</span>
+  <span class="sp"></span>
+  <span class="hide">Ваш город: Москва</span>
+  <a href="mailto:zakaz@it-stock24.ru">zakaz@it-stock24.ru</a>
+</div></div>
+
+<header class="nav"><div class="wrap">
+  <a href="#" class="logo"><i><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></i>ITSTOCK<span>24</span></a>
+  <nav class="menu">
+    <a href="#catalog">Каталог</a><a href="/about">О компании</a><a href="/delivery">Доставка и оплата</a><a href="/warranty">Гарантия и сервис</a><a href="/contacts">Контакты</a>
+  </nav>
+  <span class="sp"></span>
+  <span class="cart">Корзина · 0 ₽</span>
+  <a href="tel:88007707172" class="btn">8 800 770-71-72</a>
+  <a href="#call" class="btn hot">Обратный звонок</a>
+</div></header>
+
+<!-- HERO -->
+<div class="hero">
+  <canvas id="field"></canvas>
+  <div class="wrap">
+    <div>
+      <div class="kicker">Серверное и сетевое оборудование · с 2018</div>
+      <h1>
+        <span class="w"><span style="animation-delay:.05s">Крупнейший</span></span><br>
+        <span class="w"><span style="animation-delay:.15s"><em>онлайн</em>‑дискаунтер</span></span><br>
+        <span class="w"><span style="animation-delay:.25s">серверного</span></span><br>
+        <span class="w"><span style="animation-delay:.35s" class="o">железа.</span></span>
+      </h1>
+      <p class="lead"><b>Труднодоступное оборудование — в наличии на складе в Москве.</b> Новое, б/у и снятое с производства. Оптовые цены, доставка по всей России.</p>
+
+      <div class="search">
+        <div class="row">
+          <span class="pr">$ find</span>
+          <input id="q" placeholder="Артикул или название" autocomplete="off">
+          <a href="#catalog" class="btn hot" style="height:48px">Найти</a>
+        </div>
+        <div class="res"><span class="nm" id="rn">HP 300GB 10K SAS 6G 2.5"</span><span class="st">в наличии</span><span class="pz" id="rp">5 700 ₽</span></div>
+      </div>
+
+      <div class="stats">
+        <div><b>16</b>брендов вендоров</div>
+        <div><b>100+</b>категорий<br>комплектующих</div>
+        <div><b>РФ</b>доставка<br>по всей стране</div>
+      </div>
+    </div>
+
+    <div class="stage" id="stage">
+      <div class="rack" id="rack">
+        <div class="frame"></div><div class="side"></div>
+        <div class="units" id="units"></div>
+        <div class="glow"></div>
+      </div>
+    </div>
+  </div>
+  <div class="hint">НАВЕДИТЕ НА ЮНИТ ↗</div>
+</div>
+
+<div class="tick"><div class="tr" id="tick"></div></div>
+
+<!-- RARE -->
+<section>
+  <div class="wrap">
+    <div class="sh rv">
+      <div><div class="n">[01] НА СКЛАДЕ СЕЙЧАС</div><h2>То, что сняли с производства, <em>у нас лежит на полке.</em></h2></div>
+      <p>Диски, память и запчасти для серверов, которые уже не найти у официальных дистрибьюторов. Проверено, упаковано, готово к отгрузке.</p>
+    </div>
+    <div class="rare rv">
+      <div class="rc">
+        <span class="instock">в наличии · Москва</span>
+        <div class="pn">507127-B21</div><div class="br">HEWLETT-PACKARD · HDD</div>
+        <svg viewBox="0 0 200 140" fill="none" stroke="#ff5a1f" stroke-width="1"><rect x="10" y="20" width="180" height="100" rx="6"/><circle cx="80" cy="70" r="38"/><circle cx="80" cy="70" r="6"/><path d="M80 70 L150 40"/><rect x="150" y="30" width="20" height="14" rx="2"/><path d="M10 110h180" stroke-dasharray="3 4"/></svg>
+        <div class="ds">Жёсткий диск 300GB 10K SAS 6G 2.5"</div>
+        <div class="ft"><span class="pr">5 700 <small>₽</small></span><span class="add">+</span></div>
+      </div>
+      <div class="rc">
+        <span class="instock">в наличии · Москва</span>
+        <div class="pn">500662-B21</div><div class="br">HP · RDIMM</div>
+        <svg viewBox="0 0 200 140" fill="none" stroke="#ff5a1f" stroke-width="1"><rect x="6" y="40" width="188" height="54" rx="3"/><g><rect x="20" y="50" width="20" height="26"/><rect x="48" y="50" width="20" height="26"/><rect x="76" y="50" width="20" height="26"/><rect x="112" y="50" width="20" height="26"/><rect x="140" y="50" width="20" height="26"/><rect x="168" y="50" width="16" height="26"/></g><path d="M6 94v8h188v-8M100 94v8" /></svg>
+        <div class="ds">Оперативная память 8GB (1×8GB) PC3‑10600 RDIMM</div>
+        <div class="ft"><span class="pr">4 100 <small>₽</small></span><span class="add">+</span></div>
+      </div>
+      <div class="rc">
+        <span class="instock">в наличии · Москва</span>
+        <div class="pn">652583-B21</div><div class="br">HP · HDD</div>
+        <svg viewBox="0 0 200 140" fill="none" stroke="#ff5a1f" stroke-width="1"><rect x="10" y="20" width="180" height="100" rx="6"/><circle cx="80" cy="70" r="38"/><circle cx="80" cy="70" r="26"/><circle cx="80" cy="70" r="6"/><path d="M80 70 L150 95"/><rect x="150" y="90" width="20" height="14" rx="2"/></svg>
+        <div class="ds">Жёсткий диск 600GB 10K SAS 6G 2.5"</div>
+        <div class="ft"><span class="pr">9 500 <small>₽</small></span><span class="add">+</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section id="catalog">
+  <div class="wrap">
+    <div class="sh rv">
+      <div><div class="n">[02] КАТАЛОГ</div><h2>Пять стоек. <em>Всё, из чего собирается инфраструктура.</em></h2></div>
+    </div>
+    <div class="cats rv">
+      <a class="cat" href="/catalog"><span class="no">U01</span><span class="t">Серверы</span><span class="sub">Стоечные, блейд, башенные — новые и б/у от HP, Dell, IBM</span><span class="ar">→</span></a>
+      <a class="cat" href="/catalog"><span class="no">U02</span><span class="t">Системы хранения данных</span><span class="sub">СХД NetApp, EMC, полки расширения, ленточные библиотеки</span><span class="ar">→</span></a>
+      <a class="cat" href="/catalog"><span class="no">U03</span><span class="t">Серверные комплектующие</span><span class="sub">RAID‑контроллеры · БП · HDD · SSD · память · процессоры · салазки · стримеры</span><span class="ar">→</span></a>
+      <a class="cat" href="/catalog"><span class="no">U04</span><span class="t">Сетевое оборудование</span><span class="sub">Коммутаторы · трансиверы · DAC · точки доступа Wi‑Fi · PoE‑инжекторы</span><span class="ar">→</span></a>
+      <a class="cat" href="/catalog"><span class="no">U05</span><span class="t">Прочее</span><span class="sub">KVM · ИБП · FC‑контроллеры · блейд‑шасси · рельсы · оптика</span><span class="ar">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- BEST -->
+<section>
+  <div class="wrap">
+    <div class="sh rv">
+      <div><div class="n">[03] ЛИДЕРЫ ПРОДАЖ</div><h2>Берут чаще всего <em>на этой неделе.</em></h2></div>
+      <a href="/catalog" class="btn">Весь каталог →</a>
+    </div>
+    <div class="best rv" id="best"></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section>
+  <div class="wrap">
+    <div class="sh rv">
+      <div><div class="n">[04] НЕ ТОЛЬКО ПРОДАЁМ</div><h2>Железо плюс люди, <em>которые знают, как его включить.</em></h2></div>
+      <p>Серверное оборудование и IT‑сопровождение для стабильной работы бизнеса: от подбора до обслуживания.</p>
+    </div>
+    <div class="svc rv">
+      <div class="sv">
+        <span class="ix">/01</span>
+        <svg class="vis" viewBox="0 0 120 120" fill="none" stroke="#ff5a1f"><rect x="20" y="14" width="80" height="18" rx="3"/><rect x="20" y="40" width="80" height="18" rx="3"/><rect x="20" y="66" width="80" height="18" rx="3"/><rect x="20" y="92" width="80" height="18" rx="3" stroke-dasharray="4 4"/><circle cx="88" cy="23" r="2" fill="#3dff8b" stroke="none"/><circle cx="88" cy="49" r="2" fill="#3dff8b" stroke="none"/><circle cx="88" cy="75" r="2" fill="#3dff8b" stroke="none"/></svg>
+        <h3>Комплектация под задачу</h3>
+        <p>Соберём конфигурацию под хостинг, игровые серверы, почту или корпоративную сеть.</p>
+        <ul><li>подбор совместимых компонентов</li><li>новое и снятое с производства</li><li>охлаждение, сетевые карты, ИБП</li></ul>
+      </div>
+      <div class="sv big">
+        <span class="ix">/02</span>
+        <svg class="vis" viewBox="0 0 120 120" fill="none" stroke="#0a0a0a" stroke-width="1.5"><circle cx="60" cy="60" r="40"/><circle cx="60" cy="60" r="14"/><path d="M60 8v18M60 94v18M8 60h18M94 60h18M23 23l13 13M84 84l13 13M23 97l13-13M84 36l13-13"/></svg>
+        <h3>Монтаж, установка и обслуживание</h3>
+        <p>Установим сервер, настроим ОС Linux, подготовим помещение и шкаф — и останемся на связи.</p>
+        <ul><li>монтаж в стойку или шкаф</li><li>установка и настройка ПО</li><li>сервисное обслуживание</li></ul>
+      </div>
+      <div class="sv">
+        <span class="ix">/03</span>
+        <svg class="vis" viewBox="0 0 120 120" fill="none" stroke="#ff5a1f"><path d="M10 80h70V40H10zM80 55h18l12 14v11H80"/><circle cx="30" cy="86" r="9" fill="#06080b"/><circle cx="94" cy="86" r="9" fill="#06080b"/><path d="M20 30h40M30 20h40" stroke-dasharray="3 4"/></svg>
+        <h3>Опт и доставка по России</h3>
+        <p>Выгодные условия оптовых закупок и отгрузка со склада в Москве в любой регион.</p>
+        <ul><li>оптовые цены</li><li>консультация по наличию</li><li>доставка по Москве и РФ</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<div class="brands">
+  <div class="bl" id="b1"></div>
+  <div class="bl r" id="b2"></div>
+</div>
+
+<!-- CTA -->
+<section id="call" style="border-top:1px solid var(--line)">
+  <div class="wrap cta">
+    <div class="rv">
+      <div class="sh" style="margin:0"><div><div class="n">[05] СВЯЗАТЬСЯ</div><h2>Не нашли артикул? <em>Найдём на складе.</em></h2></div></div>
+      <a class="ph" href="tel:88007707172">8 800 770‑71‑72</a>
+      <a class="ml" href="mailto:zakaz@it-stock24.ru">zakaz@it-stock24.ru · ПН–ПТ 10:00–18:00</a>
+    </div>
+    <form class="cb rv" onsubmit="event.preventDefault();this.querySelector('.ok').style.display='block';this.reset()">
+      <label>Имя<input required placeholder="Как к вам обращаться"></label>
+      <label>Телефон<input required type="tel" placeholder="+7"></label>
+      <label>Что ищете<textarea rows="3" placeholder="Артикул, модель или задача"></textarea></label>
+      <button class="btn hot">Перезвоните мне</button>
+      <div class="ok">✓ Благодарим за запрос! Мы свяжемся с вами в самое ближайшее время.</div>
+      <small>Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.</small>
+    </form>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <div class="g">
+    <div><a href="#" class="logo" style="margin-bottom:18px"><i><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></i>ITSTOCK<span>24</span></a>Серверное и сетевое оборудование — купить в Москве с доставкой по России.</div>
+    <div><h4>Компания</h4><a href="/about">О компании</a><a href="/vacancies">Вакансии</a><a href="/stazhirovka">Стажировка</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Покупателям</h4><a href="/catalog">Каталог товаров</a><a href="/delivery">Доставка и оплата</a><a href="/warranty">Гарантия и сервис</a><a href="/sitemap">Карта сайта</a></div>
+    <div><h4>Реквизиты</h4>ООО «АйТи‑Сток 24»<br>ИНН/КПП 7743292726 / 773301001<br>ОГРН 1197746137203<br>г. Москва, ул. Тушинская, д. 17</div>
+  </div>
+  <div class="huge">ITSTOCK<span>24</span></div>
+  <div class="bt"><span>© 2018–2025 ITSTOCK24 · <a href="/privacy" style="display:inline">Политика конфиденциальности</a></span><span>Цены и характеристики носят ознакомительный характер и не являются публичной офертой.</span></div>
+</div></footer>
+
+<script>
+/* ---- data ---- */
+const P=[
+ ['507127-B21','HP 300GB 10K SAS 6G 2.5"','5 700 ₽'],
+ ['500662-B21','HP 8GB PC3-10600 RDIMM','4 100 ₽'],
+ ['652583-B21','HP 600GB 10K SAS 6G 2.5"','9 500 ₽'],
+ ['M386AAG40AM3-CWE','Samsung 128 ГБ DDR4 3200','54 263 ₽'],
+ ['809084-091','HP 32GB DDR4-2400 Dual Rank','23 184 ₽'],
+ ['M393A2G40DB0-CPB','Samsung DDR4 16GB REG','2 305 ₽'],
+ ['Q2078A','HP LTO-8 30TB RW Tape','4 022 ₽'],
+ ['V0K7V','Dell 1.92TB 12G SAS SSD','122 196 ₽'],
+ ['HMA84GR7CJR4N-VK','Hynix 32 ГБ RDIMM DDR4 2666','5 186 ₽'],
+ ['SSDSC2KG480G8','Intel SSD DC S4610 480GB','16 845 ₽'],
+];
+const B=[
+ ['Память','M386AAG40AM3-CWE','Оперативная память Samsung 128 ГБ','DDR4|3200 МГц|LRDIMM','54 263 ₽'],
+ ['Память','809084-091','Оперативная память HP 32GB Dual Rank x4','DDR4|2400|RDIMM','23 184 ₽'],
+ ['Память','M393A2G40DB0-CPB','Оперативная память Samsung 16GB REG','DDR4|REG|ECC','2 305 ₽'],
+ ['Ленты','Q2078A','Картридж HP LTO‑8 30TB RW (New Retail)','LTO-8|30 TB|New','4 022 ₽'],
+ ['SSD','V0K7V','Накопитель Dell 1.92TB 12G 2.5" SAS MU','SAS 12G|2.5"|MU','122 196 ₽'],
+ ['Ленты','01PL041','Картридж IBM LTO8 Ultrium 12–30TB','LTO-8|NEW','—'],
+ ['Память','HMA84GR7CJR4N-VK','Оперативная память Hynix 32 ГБ RDIMM','DDR4|2666 МГц|RDIMM','5 186 ₽'],
+ ['SSD','S4610','Intel SSD DC S4610 Series 480GB','SATA III|2.5"|DC','16 845 ₽'],
+];
+const BR=['HP','Dell','IBM','Cisco','NetApp','EMC','Juniper','Brocade','Sun','QLogic','Emulex','Adaptec','Promise','Nortel','Digium','Myricom'];
+
+/* ---- rack ---- */
+const units=document.getElementById('units');
+const rackItems=[P[7],P[3],P[0],P[4],P[2],P[6],P[1],P[8],P[9],P[5]];
+rackItems.forEach((p,i)=>{
+  const u=document.createElement('div');u.className='u';
+  let bays='';for(let k=0;k<8;k++){const a=Math.random()>.35;bays+=`<i class="${a?'a':''}" style="--t:${(.3+Math.random()*1.6).toFixed(2)}s"></i>`}
+  u.innerHTML=`<span class="lab">U${String(i+1).padStart(2,'0')}</span><div class="bays">${bays}</div><div class="leds"><b class="${i%3?'g':'r'}"></b><b class="g"></b><b></b></div><div class="tag"><b>${p[1]}</b><s>${p[2]}</s></div>`;
+  units.appendChild(u);
+});
+const us=[...units.children];let auto=0,hov=false;
+units.addEventListener('mouseenter',()=>{hov=true;us.forEach(x=>x.classList.remove('on'))});
+units.addEventListener('mouseleave',()=>hov=false);
+setInterval(()=>{if(hov)return;us.forEach(x=>x.classList.remove('on'));us[auto%us.length].classList.add('on');auto+=3},2200);
+us[2].classList.add('on');
+
+const rack=document.getElementById('rack');
+let tx=-24,ty=8,cx=-24,cy=8;
+addEventListener('mousemove',e=>{tx=-24+(e.clientX/innerWidth-.5)*22;ty=8-(e.clientY/innerHeight-.5)*14});
+(function loop(){cx+=(tx-cx)*.06;cy+=(ty-cy)*.06;rack.style.transform=`rotateY(${cx}deg) rotateX(${cy}deg)`;requestAnimationFrame(loop)})();
+
+/* ---- LED field ---- */
+const cv=document.getElementById('field'),cx2=cv.getContext('2d');let W,H,dots=[],mx=-999,my=-999;
+function rs(){const r=cv.getBoundingClientRect();W=cv.width=r.width*devicePixelRatio;H=cv.height=r.height*devicePixelRatio;dots=[];const s=26*devicePixelRatio;for(let x=s/2;x<W;x+=s)for(let y=s/2;y<H;y+=s)dots.push({x,y,p:Math.random()*6.28,o:Math.random()<.015})}
+rs();addEventListener('resize',rs);
+cv.parentElement.addEventListener('mousemove',e=>{const r=cv.getBoundingClientRect();mx=(e.clientX-r.left)*devicePixelRatio;my=(e.clientY-r.top)*devicePixelRatio});
+let t=0;(function draw(){t+=.016;cx2.clearRect(0,0,W,H);const R=220*devicePixelRatio;
+for(const d of dots){const dx=d.x-mx,dy=d.y-my,dist=Math.sqrt(dx*dx+dy*dy);let a=.07,c='120,140,160',r=1.1*devicePixelRatio;
+ if(dist<R){const k=1-dist/R;a=.08+k*.9*(.6+.4*Math.sin(t*6-dist*.03));c='255,90,31';r*=1+k*1.2}
+ else if(d.o){a=.25+.25*Math.sin(t*2+d.p);c='61,255,139'}
+ cx2.fillStyle=`rgba(${c},${a})`;cx2.fillRect(d.x-r,d.y-r,r*2,r*2)}
+requestAnimationFrame(draw)})();
+
+/* ---- search typer ---- */
+const q=document.getElementById('q'),rn=document.getElementById('rn'),rp=document.getElementById('rp');let qi=0,typing=true;
+async function typeLoop(){while(typing){const p=P[qi%P.length];for(let i=0;i<=p[0].length&&typing;i++){q.placeholder=p[0].slice(0,i)+'▌';await sl(55)}rn.textContent=p[1];rp.textContent=p[2];await sl(1800);qi++}}
+const sl=m=>new Promise(r=>setTimeout(r,m));typeLoop();
+q.addEventListener('focus',()=>{typing=false;q.placeholder='Артикул или название'});
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();const f=P.find(p=>(p[0]+p[1]).toLowerCase().includes(v));if(f&&v){rn.textContent=f[0]+' · '+f[1];rp.textContent=f[2]}else if(v){rn.textContent='Уточним наличие у менеджера';rp.textContent='запрос'}});
+
+/* ---- ticker / brands / best ---- */
+const tk=P.map(p=>`<span><b>${p[0]}</b>${p[1]} · <i>${p[2]}</i></span>`).join('');document.getElementById('tick').innerHTML=tk+tk;
+const bh=BR.map((b,i)=>`<span class="${i%5==0?'f':''}">${b}</span><span class="d">●</span>`).join('');
+document.getElementById('b1').innerHTML=bh+bh;
+const bh2=[...BR].reverse().map((b,i)=>`<span class="${i%6==2?'f':''}">${b}</span><span class="d">●</span>`).join('');
+document.getElementById('b2').innerHTML=bh2+bh2;
+document.getElementById('best').innerHTML=B.map(b=>`<div class="bc"><span class="ty">${b[0]}</span><span class="pn">${b[1]}</span><h3>${b[2]}</h3><div class="spec">${b[3].split('|').map(s=>`<i>${s}</i>`).join('')}</div><div class="bot">${b[4]==='—'?'<span class="pr ask">Цену уточняйте<br>у менеджера</span>':`<span class="pr">${b[4]}</span>`}<div class="act"><button title="В избранное">♡</button><button title="К сравнению">⇄</button><button class="c" title="В корзину">+</button></div></div></div>`).join('');
+document.querySelectorAll('.bc').forEach(c=>c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')}));
+
+/* ---- reveal ---- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
